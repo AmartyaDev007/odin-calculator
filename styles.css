@@ -11,15 +11,20 @@ body {
 }
 
 .main-box {
-    width: 400px;
+    width: 450px;
     height: 600px;
     border: 2px solid red;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
 }
 
 .display-box {
     background-color: grey;
-    width: 100rem;
+    width: 430px;
     height: 200px;
     margin: 10px;
+    border-radius: 10px;
 }
