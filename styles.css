@@ -38,13 +38,6 @@ body {
 
 }
 
-.top-btn-group {
-    width: 100%;
-    /* border: solid green; */
-    display: flex;
-    height: 75px;
-    
-}
 
 button {
     width: 100%;
@@ -59,10 +52,10 @@ button {
 
 }
 
-.else-btn-group button {
+/* .else-btn-group button {
     width: 100%;
     
-}
+} */
 
 .else-btn-group {
     height: 400px;
