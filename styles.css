@@ -16,9 +16,9 @@ body {
     border: 2px solid red;
     border-radius: 20px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .display-box {
@@ -27,35 +27,48 @@ body {
     height: 200px;
     margin: 10px;
     border-radius: 10px;
-    border: solid rebeccapurple;
+    /* border: solid rebeccapurple; */
 }
 
-all-btn-box {
+.all-btn-box {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    flex: 1;
+
 }
 
 .top-btn-group {
     width: 100%;
-    height: 80px;
-    border: solid green;
+    /* border: solid green; */
     display: flex;
+    height: 75px;
     
 }
 
 button {
     width: 100%;
+    height: 100%;
 }
 
-.else-btn-group {
+.row {
     display: flex;
-    flex-wrap: wrap;
-    border: solid red;
+    justify-content: space-around;
+    /* border: solid red; */
+    flex: 1;
+
 }
 
 .else-btn-group button {
-    width: 80px;
-    height: 40px;
+    width: 100%;
+    
 }
+
+.else-btn-group {
+    height: 400px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+}
+
