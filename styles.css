@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border: solid magenta;
+}
+
+.main-box {
+    width: 400px;
+    height: 600px;
+    border: 2px solid red;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.display-box {
+    background-color: grey;
+    width: 360px;
+    height: 200px;
+}
