@@ -15,13 +15,11 @@ body {
     height: 600px;
     border: 2px solid red;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .display-box {
     background-color: grey;
-    width: 360px;
+    width: 100rem;
     height: 200px;
+    margin: 10px;
 }
