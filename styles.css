@@ -27,4 +27,35 @@ body {
     height: 200px;
     margin: 10px;
     border-radius: 10px;
+    border: solid rebeccapurple;
+}
+
+all-btn-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.top-btn-group {
+    width: 100%;
+    height: 80px;
+    border: solid green;
+    display: flex;
+    
+}
+
+button {
+    width: 100%;
+}
+
+.else-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid red;
+}
+
+.else-btn-group button {
+    width: 80px;
+    height: 40px;
 }
