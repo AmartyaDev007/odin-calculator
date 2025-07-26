@@ -40,3 +40,5 @@
 - division by `0` must be handled
 - if consecutive `+` operators are pressed, it should be handled accordingly
 - When a result is displayed, pressing a new digit should clear the result and start a new calculation instead of appending the digit to the existing result. Check whether this is the case on your calculator!
+
+terest
