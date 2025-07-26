@@ -1,5 +1,6 @@
 let operandOne = 0;
 let operandTwo = 0;
+let operator;
 
 let mainDisplay = 0;
 
@@ -13,7 +14,7 @@ allButtons.addEventListener('click', event => {
     let target = event.target;
 
     if (target.classList.contains('number')) {
-        event.target.textContent
+        event.target.textContent;
     }
 
     else if (target.classList.contains('operator')) {
@@ -32,10 +33,16 @@ allButtons.addEventListener('click', event => {
         case 'equal-button':
             break;
     }
+})
 
-    function add (a, b) { 
-        return a + b;
-    }
+function printer() { 
+    
+}
+
+
+function add (a, b) { 
+    return a + b;
+}
 
 function subtract (a, b) { 
     return a - b;

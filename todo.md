@@ -24,4 +24,19 @@
 
 - add keyboard support 
 
+---
 
+# Bare minimums 
+
+- Functions to do basic math (add, sub, mult, div) 
+- only 2 operands, create 3 vars one for each part 
+- a function `operate` takes operator and two numbers  and then calls one of the arithmetic functions
+- `=` operator, `clear` button, display for the calculator
+- functions that populate or change the display when a digit button is clicked. store the content of the display in a variable for use in next steps 
+- **calculator must not evaluate more than single pair of numbers at a time** 
+- **round answers to avoid overflow**
+- pressing `=` before entering a pair of operands should not cause error
+- clear should reset everything
+- division by `0` must be handled
+- if consecutive `+` operators are pressed, it should be handled accordingly
+- When a result is displayed, pressing a new digit should clear the result and start a new calculation instead of appending the digit to the existing result. Check whether this is the case on your calculator!
