@@ -26,6 +26,9 @@ body {
     height: 200px;
     margin: 10px;
     border-radius: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .all-btn-box {
@@ -53,5 +56,18 @@ button {
 }
 #backspace-button {
     width: 213px;
+}
+
+.text-content { 
+    border: 2px solid red;
+    height: 80px;
+    flex: 1;
+    text-align: end;
+    font-size: 70px;
+}
+
+#main-display { 
+    margin: 0;
+    margin-right: 5px;
 }
 
