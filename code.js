@@ -1,11 +1,11 @@
-let operandOne = 0;
+let operandOne;
 let operandTwo = 0;
 let operator;
-
+let previousOperatorButton = "";
 let mainDisplay = 0;
 
 // this variable displays the top smaller greyed out text in the display
-let altDisplay;
+let altDisplay; // probably not gonna implement it 
 
 
 const allButtons = document.querySelector(".all-btn-box");
@@ -79,28 +79,83 @@ allButtons.addEventListener('click', event => {
         // add the first operand to a variable IF EQUALS 0 ELSE ADD TO SECOND OPERAND
         // remove all textcontent 
         // update operator variable with current operator
+        operator = target.textContent;
+        target.style.backgroundColor = "yellow";
+
+        // if (operandOne == undefined) { 
+        //     operandOne = mainTextContent.textContent;
+        //     mainTextContent.textContent = 0;
+        // }
+
+        operandOne = mainTextContent.textContent;
+        mainTextContent.textContent = 0;
+        //  else { 
+        //     operandTwo = mainTextContent.textContent;
+        // }
+
+        if (previousOperatorButton) {
+            previousOperatorButton.style.backgroundColor = "";
+        }
+
+        previousOperatorButton = target;
+
+        // TODO unexpected behavior when clicking same operand multiple times
     }
+
     switch(target.id) {
         case 'ac-button':
             mainTextContent.textContent = "0";
             // RESET OPERATOR VAR AND OPERAND BOTH VARS
+            operandOne = undefined;
+            operandTwo = undefined;
+            previousOperatorButton.style.backgroundColor = "";
+            operator = undefined;
+            previousOperatorButton = undefined;
+            
         
         case 'backspace-button':
             // remove textcontent last char from maintextcontent var
+            // if you run out of numbers maintextcontent does default to empty instead a 0
+            if (mainTextContent.textContent != 0) { 
+                mainTextContent.textContent = mainTextContent.textContent.slice(0, -1);
+            }
+
+            if (mainTextContent.textContent.length == 0) { 
+                mainTextContent.textContent = "0";
+            }
+            
 
         case 'decimal-button':
             // if there is `.` in maintextcontent var already dont add anything 
             // else add `.` 
 
+            if (!(mainTextContent.textContent.includes("."))) { 
+                mainTextContent.textContent += ".";
+            }
+
         case 'equal-button':
+            // if no operator provided do nothing
             // call operate with all 3 vars and then that function calls
             // one of the operator function which returns the result
             // into operate and operate updates textcontent buh
+            // add the operandtwo into the variable 
+            if (operator == undefined) { 
+                return;
+            }
+            operandTwo = mainTextContent.textContent;
+
+            printer(operandOne, operandTwo, operator);
         
         case 'change-sign': 
             // append in front in `maintextcontent` var a sign 
             // if string 0th value != `-` then append `-` else 
             // if `-` exists remove it (to turn it to positive)
+
+            if (mainTextContent.textContent.charAt(0) != '-' && mainTextContent.textContent.length <= 11) { 
+                mainTextContent.textContent = "-" + mainTextContent.textContent;
+            } else if (mainTextContent.textContent.charAt(0) == "-") { 
+                mainTextContent.textContent = mainTextContent.textContent.slice(1);
+            }
     }
 })
 

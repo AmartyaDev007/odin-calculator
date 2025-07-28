@@ -49,6 +49,7 @@ button {
     width: 106.5px;
     height: 100%;
     font-size: 1.4rem;
+    
 }
 
 #ac-button, #slash-button {
@@ -69,5 +70,6 @@ button {
 #main-display { 
     margin: 0;
     margin-right: 5px;
+    font-family: "Times New Roman";
 }
 
