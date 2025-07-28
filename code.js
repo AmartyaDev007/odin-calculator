@@ -2,10 +2,10 @@ let operandOne;
 let operandTwo = 0;
 let operator;
 let previousOperatorButton = "";
-let mainDisplay = 0;
+// let mainDisplay = 0;
 
 // this variable displays the top smaller greyed out text in the display
-let altDisplay; // probably not gonna implement it 
+// let altDisplay; // probably not gonna implement it 
 
 
 const allButtons = document.querySelector(".all-btn-box");
@@ -13,11 +13,23 @@ const mainTextContent = document.querySelector("#main-display");
 
 
 
-function printer() { 
+function printer(x, y, operator) { 
     // takes 3 args 
-
+                        
     // calls one of the opeartor functions
     // result is printed as mainTextcontent whatever is returned
+
+    let operations = { 
+        '+': add,
+        '-': subtract, 
+        '/': divide,
+        '*': multiply,
+    }
+    let intX = parseInt(x);
+    let intY = parseInt(y);
+
+    let result = operations[operator](intX, intY);
+    mainTextContent.textContent = result;
 }
 
 
@@ -48,6 +60,9 @@ function textOverflow(string) {
     return false;
 }
 
+function reset() { 
+    
+}
 
 
 
@@ -103,16 +118,21 @@ allButtons.addEventListener('click', event => {
     }
 
     switch(target.id) {
+
         case 'ac-button':
             mainTextContent.textContent = "0";
             // RESET OPERATOR VAR AND OPERAND BOTH VARS
             operandOne = undefined;
             operandTwo = undefined;
-            previousOperatorButton.style.backgroundColor = "";
+            if (previousOperatorButton) { 
+                previousOperatorButton.style.backgroundColor = "";
+            }
+            
             operator = undefined;
             previousOperatorButton = undefined;
+            break;
             
-        
+
         case 'backspace-button':
             // remove textcontent last char from maintextcontent var
             // if you run out of numbers maintextcontent does default to empty instead a 0
@@ -123,8 +143,9 @@ allButtons.addEventListener('click', event => {
             if (mainTextContent.textContent.length == 0) { 
                 mainTextContent.textContent = "0";
             }
+            break;
             
-
+            
         case 'decimal-button':
             // if there is `.` in maintextcontent var already dont add anything 
             // else add `.` 
@@ -132,6 +153,8 @@ allButtons.addEventListener('click', event => {
             if (!(mainTextContent.textContent.includes("."))) { 
                 mainTextContent.textContent += ".";
             }
+            break;
+
 
         case 'equal-button':
             // if no operator provided do nothing
@@ -145,7 +168,9 @@ allButtons.addEventListener('click', event => {
             operandTwo = mainTextContent.textContent;
 
             printer(operandOne, operandTwo, operator);
+            break;
         
+            
         case 'change-sign': 
             // append in front in `maintextcontent` var a sign 
             // if string 0th value != `-` then append `-` else 
@@ -156,6 +181,7 @@ allButtons.addEventListener('click', event => {
             } else if (mainTextContent.textContent.charAt(0) == "-") { 
                 mainTextContent.textContent = mainTextContent.textContent.slice(1);
             }
+            break;
     }
 })
 
