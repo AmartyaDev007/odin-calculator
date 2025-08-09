@@ -25,11 +25,19 @@ function printer(x, y, operator) {
         '/': divide,
         '*': multiply,
     }
-    let intX = parseInt(x);
-    let intY = parseInt(y);
+    let intX = parseFloat(x);
+    let intY = parseFloat(y);
 
     let result = operations[operator](intX, intY);
-    mainTextContent.textContent = result;
+    let boom = String(result);
+
+      if (boom.length > 12) {
+        mainTextContent.textContent = Number(result).toExponential(3); // Adjust precision as needed
+    } else { 
+        mainTextContent.textContent = result;
+    }
+
+    
 }
 
 
@@ -46,9 +54,10 @@ function multiply (a, b) {
 }
 
 function divide (a, b) { 
+    if (a == 0 || b == 0) { 
+        return "Error"
+    }
     return a / b;
-
-    // if any of the args are 0 return cant divide by zero
 }
 
 
@@ -61,7 +70,16 @@ function textOverflow(string) {
 }
 
 function reset() { 
+    mainTextContent.textContent = "0";
+            // RESET OPERATOR VAR AND OPERAND BOTH VARS
+    operandOne = undefined;
+    operandTwo = undefined;
+    if (previousOperatorButton) { 
+        previousOperatorButton.style.backgroundColor = "";
+    }
     
+    operator = undefined;
+    previousOperatorButton = undefined;
 }
 
 
@@ -80,6 +98,9 @@ allButtons.addEventListener('click', event => {
 
         if (mainTextContent.textContent == "0") { 
             mainTextContent.textContent = target.textContent;
+            return;
+        } else if (mainTextContent.textContent == "-0") { 
+            mainTextContent.textContent = "-" + target.textContent;
             return;
         }
 
@@ -120,16 +141,7 @@ allButtons.addEventListener('click', event => {
     switch(target.id) {
 
         case 'ac-button':
-            mainTextContent.textContent = "0";
-            // RESET OPERATOR VAR AND OPERAND BOTH VARS
-            operandOne = undefined;
-            operandTwo = undefined;
-            if (previousOperatorButton) { 
-                previousOperatorButton.style.backgroundColor = "";
-            }
-            
-            operator = undefined;
-            previousOperatorButton = undefined;
+            reset();
             break;
             
 
@@ -165,6 +177,10 @@ allButtons.addEventListener('click', event => {
             if (operator == undefined) { 
                 return;
             }
+
+            if (previousOperatorButton) {
+                previousOperatorButton.style.backgroundColor = "";
+            }
             operandTwo = mainTextContent.textContent;
 
             printer(operandOne, operandTwo, operator);
@@ -176,8 +192,18 @@ allButtons.addEventListener('click', event => {
             // if string 0th value != `-` then append `-` else 
             // if `-` exists remove it (to turn it to positive)
 
-            if (mainTextContent.textContent.charAt(0) != '-' && mainTextContent.textContent.length <= 11) { 
+
+            // if (mainTextContent.textContent == '0') { 
+            //     mainTextContent.textContent = "-";
+            // } 
+
+            // TODO add when text is 0 append `-` in front of it 
+            if (mainTextContent.textContent == '0') { 
+                mainTextContent.textContent = "-0";
+            }
+            else if (mainTextContent.textContent.charAt(0) != '-' && mainTextContent.textContent.length <= 11) { 
                 mainTextContent.textContent = "-" + mainTextContent.textContent;
+
             } else if (mainTextContent.textContent.charAt(0) == "-") { 
                 mainTextContent.textContent = mainTextContent.textContent.slice(1);
             }
